@@ -1,0 +1,18 @@
+.logindiv {
+    position: relative;
+    margin: auto;
+    border: 1px solid black;
+    margin-top: 50px;
+    padding: 50px;
+    height: 350px;
+    width: 400px;
+   
+}
+.btnlog{
+    border: 1.1px solid black;
+    border-radius: 5px;
+    
+}
+input{
+    border: 1px solid black;
+}
