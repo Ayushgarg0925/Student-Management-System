@@ -40,19 +40,17 @@
 
                  
             <label for="ip1">Your Name</label>            
-            <input class="form-control" type="text" name="i1" id="ip1">
-
-
+            <input class="form-control" type="text" name="i1" id="ip1" value="{{sm.ename}}" >
             <label for="ip2">Enter Your Age</label>            
-            <input class="form-control" type="number" name="i2" id="ip2">
+            <input class="form-control" type="number" name="i2" id="ip2" value="{{sm.eage}}">
             <label for="ip3">Enter Your Mobile no.</label>            
-            <input class="form-control" type="text" name="i3" id="ip3">
+            <input class="form-control" type="text" name="i3" id="ip3" value="{{sm.eno}}">
             <label for="ip4">Enter Your Address</label>            
-            <input class="form-control" type="text" name="i4" id="ip4">
+            <input class="form-control" type="text" name="i4" id="ip4" value="{{sm.eaddress}}">
 
 
             <label for="ip2">Password</label>       
-            <input class="form-control" type="password" name="i5" id="ip2" >
+            <input class="form-control" type="password" name="i5" id="ip2" value="{{sm.epassword}}">
 
             <button class="btn btn-success form-control mt-4" name='login_btn' type="submit" onclick="submit_a()">Submit</button>
             <a href="http://127.0.0.1:8000/">Back</a>
