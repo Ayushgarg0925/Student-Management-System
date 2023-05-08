@@ -25,7 +25,7 @@ urlpatterns = [
 
 
 
-    path('a', home),
+    path('a/', home),# for testing purpose 
 
     # path('', home1),
 ]
