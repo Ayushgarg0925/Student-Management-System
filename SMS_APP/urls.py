@@ -3,7 +3,18 @@ from .views import *
 
 urlpatterns = [
     path('',home),
-    path('log/',log_in),
+    path('registration/',log_in,name='logs'),
+
+
+
+
+
+
+
+
+
+
+    
     path('edit/<int:a>/',edit_page),
     path('delete/<int:a>/',delete_data),
     path('edit1/<int:a>/',showall_edit_page),

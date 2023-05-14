@@ -19,13 +19,4 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('SMS_APP.urls')),
-
-
-
-
-
-
-    path('a/', home),# for testing purpose 
-
-    # path('', home1),
 ]

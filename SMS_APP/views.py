@@ -39,7 +39,14 @@ def log_in(request):
         i.eaddress=useraddress
         i.epassword=userpwd
         i.save()
-        return HttpResponse('<h1>data add successfully!!!</h1><a href="http://127.0.0.1:8000">Back</a>')       
+        # return HttpResponse('<script>alert("Hello! I am an alert box!!");</script>')       
+        return HttpResponse('<h1>data add successfully!!!</h1><a href="/">Back</a>')       
+    
+
+
+
+
+    
      
 def edit_page(request,a):
     if request.method == 'GET':
@@ -79,4 +86,5 @@ def showall_edit_page(request,a):
 
 def delete_data_allpage(request,a):
     login.objects.filter(id=a).delete()
-    return render(request,'SMS_APP/show_all.html')
+    # return render(request,'SMS_APP/show_all.html')
+    return redirect('/registration/')
