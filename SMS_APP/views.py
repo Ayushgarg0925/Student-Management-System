@@ -1,27 +1,51 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from SMS_APP.models import *
+from SMS_APP.decorator import *
+from django.contrib.auth import *
 
+# def home(request):
+#     if request.method=='GET':
+#         return render(request,'SMS_APP/index.html')          
+#     elif request.method=='POST':
+#         try:
+#             username=request.POST.get('i1','NA')
+#             userpwd=request.POST.get('p1','NA')
+#             if username=='admin' and userpwd=='admin':
+#                 data=login.objects.all()
+#                 d1={'c':data}
+#                 return render(request,'SMS_APP/show_all.html', context=d1) 
+#             else:
+#                 a=login.objects.get(ename=username,epassword=userpwd)
+#                 d1={
+#                     'a':username,
+#                     'c':a,
+#                 }
+#                 return render(request,'SMS_APP/show.html', context=d1)    
+#         except:
+#             return HttpResponse('<h1>wrong Id or Password</h1><br><a href="http://127.0.0.1:8000">Back</a>')
+        
+@check_authenticated
 def home(request):
     if request.method=='GET':
-        return render(request,'SMS_APP/index.html')          
+        resp=render(request,'SMS_APP/index.html')
+        return resp
     elif request.method=='POST':
-        try:
-            username=request.POST.get('i1','NA')
-            userpwd=request.POST.get('p1','NA')
-            if username=='admin' and userpwd=='admin':
-                data=login.objects.all()
-                d1={'c':data}
-                return render(request,'SMS_APP/show_all.html', context=d1) 
-            else:
-                a=login.objects.get(ename=username,epassword=userpwd)
-                d1={
+        username=request.POST.get('i1','NA')
+        userpwd=request.POST.get('p1','NA')
+        user=authenticate(username=username,password=userpwd)
+        if user is not None:
+            login(request,user)
+            a=login.objects.get(ename=username,epassword=userpwd)
+            d1={
                     'a':username,
                     'c':a,
                 }
-                return render(request,'SMS_APP/show.html', context=d1)    
-        except:
-            return HttpResponse('<h1>wrong Id or Password</h1><br><a href="http://127.0.0.1:8000">Back</a>')
+            return render(request,'SMS_APP/show.html', context=d1) 
+        else:
+            resp=render(request,'SMS_APP/index.html')
+            #resp=HttpResponse("<h1>Login Failed!!</h1>")
+            return resp
             
 def log_in(request):
     if request.method=='GET':
